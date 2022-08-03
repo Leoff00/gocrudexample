@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	db.StartDB()
+	go db.StartDB()
 
 	http.HandleFunc("/get", service.Get)
 	http.HandleFunc("/post", service.Post)

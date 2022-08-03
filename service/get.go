@@ -14,8 +14,8 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(200)
 
 	var user models.User
-	res := db.GetDatabase().First(&user)
-	result := json.NewEncoder(w).Encode(res)
-	// payload, _ := json.MarshalIndent(res, " ", "    ")
-	fmt.Println(res, result)
+	fmt.Println(user)
+	db.GetDatabase().First(&user).Scan(&user)
+	bt, _ := json.Marshal(user)
+	fmt.Println(string(bt))
 }
